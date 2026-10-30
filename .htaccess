@@ -1,0 +1,21 @@
+# ====================================================================
+# Dr. Gamze ALAK — Academic Portfolio
+# Apache / cPanel / LiteSpeed URL Routing for Multilingual SPA
+# Serves the single index.html file for any language path (/tr, /en, /de, etc.)
+# ====================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # If the requested path is an existing file or directory, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Don't rewrite asset requests (styles, scripts, images, fonts, pdfs)
+    RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|pdf|json|webmanifest)$ [NC]
+
+    # Rewrite all language URLs (e.g., /tr, /en, /de, /fr, /zh, /ar, etc.) to index.html
+    RewriteRule ^([a-zA-Z]{2}(-[a-zA-Z]{2})?)(/.*)?$ index.html [L,QSA]
+</IfModule>

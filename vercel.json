@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/:lang(tr|en|de|fr|zh|ru|es|ar|ja|fi|da|pl|bg|af|id|hi|ur|fa|pt|el|nl)/:path*", "destination": "/index.html" },
+    { "source": "/:lang(tr|en|de|fr|zh|ru|es|ar|ja|fi|da|pl|bg|af|id|hi|ur|fa|pt|el|nl)", "destination": "/index.html" }
+  ]
+}
